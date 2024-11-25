@@ -5,21 +5,23 @@
 }
 
 body {
-    background-image: url('./white_bg.jpg');
     background-size: cover;
-    background-position:center center;
+    background-position: center center;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
     font-family: 'Potta One', cursive;
     margin: 0;
+    transition: background-image 1s ease-in-out; /* Smooth transition between backgrounds */
 }
 
 h1 {
     font-weight: normal;
     font-size: 4rem;
     margin-top: 5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Makes text more readable */
+    color: white;
 }
 
 .countdown-container {
@@ -34,6 +36,8 @@ h1 {
     font-size: 6rem;
     line-height: 1;
     margin: 1rem 2rem;
+    color: white; /* Ensure text is readable on all backgrounds */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .countdown-el {
@@ -42,4 +46,6 @@ h1 {
 
 .countdown-el span {
     font-size: 1.3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
