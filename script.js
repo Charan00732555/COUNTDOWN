@@ -2,17 +2,14 @@ const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
 const minsEl = document.getElementById("mins");
 const secondsEl = document.getElementById("seconds");
+const headingEl = document.getElementById("heading");
 
 const newYears = "9 Dec 2024 17:00:00";
 
 // Array of background images
 const backgrounds = [
-   './BG_1.jpg',
-   './BG_2.jpg',
-   './BG_3.jpg',
-   './BG_4.png',
-   './BG_5.jpg',
-   './BG_6.jpg'
+    './BG_1.jpg', './BG_2.jpg', './BG_3.jpg',
+    './BG_4.png', './BG_5.jpg', './BG_6.jpg'
 ];
 
 let backgroundIndex = 0;
@@ -44,6 +41,13 @@ function changeBackground() {
 
     // Set the new background
     document.body.style.backgroundImage = `url('${backgrounds[backgroundIndex]}')`;
+
+    // Update the heading text
+    if (backgroundIndex % 2 === 0) {
+        headingEl.textContent = "For Sports Week 2024";
+    } else {
+        headingEl.textContent = "...Till The Thrill Begins";
+    }
 }
 
 // Initial calls
@@ -53,5 +57,5 @@ changeBackground();
 // Update the countdown every second
 setInterval(countdown, 1000);
 
-// Update the background every 10 seconds
+// Update the background and heading every 10 seconds
 setInterval(changeBackground, 10000);
