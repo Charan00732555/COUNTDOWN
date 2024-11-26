@@ -2,22 +2,31 @@ const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
 const minsEl = document.getElementById("mins");
 const secondsEl = document.getElementById("seconds");
-const headingEl = document.getElementById("heading");
 
 const newYears = "9 Dec 2024 17:00:00";
-
-// Array of background images
 const backgrounds = [
-    './BG_1.jpg', './BG_2.jpg', './BG_3.jpg',
-    './BG_4.png', './BG_5.jpg', './BG_6.jpg'
+    './BG_1.jpg',
+    './BG_2.jpg',
+    './BG_3.jpg',
+    './BG_4.png',
+    './BG_5.jpg',
+    './BG_6.jpg'
 ];
-
 let backgroundIndex = 0;
+const layers = [document.createElement('div'), document.createElement('div')];
+
+layers.forEach((layer, index) => {
+    layer.className = 'background-layer';
+    document.body.appendChild(layer);
+    if (index === 0) {
+        layer.classList.add('visible');
+        layer.style.backgroundImage = `url('${backgrounds[backgroundIndex]}')`;
+    }
+});
 
 function countdown() {
     const newYearsDate = new Date(newYears);
     const currentDate = new Date();
-
     const totalSeconds = (newYearsDate - currentDate) / 1000;
 
     const days = Math.floor(totalSeconds / 3600 / 24);
@@ -36,26 +45,17 @@ function formatTime(time) {
 }
 
 function changeBackground() {
-    // Increment the index and loop back to the start if needed
+    const currentLayer = layers[backgroundIndex % 2];
+    const nextLayer = layers[(backgroundIndex + 1) % 2];
     backgroundIndex = (backgroundIndex + 1) % backgrounds.length;
 
-    // Set the new background
-    document.body.style.backgroundImage = `url('${backgrounds[backgroundIndex]}')`;
+    nextLayer.style.backgroundImage = `url('${backgrounds[backgroundIndex]}')`;
 
-    // Update the heading text
-    if (backgroundIndex % 2 === 0) {
-        headingEl.textContent = "For Sports Week 2024";
-    } else {
-        headingEl.textContent = "...Till The Thrill Begins";
-    }
+    currentLayer.classList.remove('visible');
+    nextLayer.classList.add('visible');
 }
 
-// Initial calls
+// Initialize countdown and transitions
 countdown();
-changeBackground();
-
-// Update the countdown every second
 setInterval(countdown, 1000);
-
-// Update the background and heading every 10 seconds
 setInterval(changeBackground, 10000);
