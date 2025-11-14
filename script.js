@@ -3,7 +3,7 @@ const hoursEl = document.getElementById("hours");
 const minsEl = document.getElementById("mins");
 const secondsEl = document.getElementById("seconds");
 
-const newYears = "9 Dec 2024 17:00:00";
+const newYears = "8 Dec 2025 17:00:00";
 const backgrounds = [
     './BG_1.jpg',
     './BG_2.jpg',
